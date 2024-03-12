@@ -1,10 +1,7 @@
 import { Negociacoes } from "./../models/negociacoes.js";
-export class NegociacoesView {
-  private elemento: HTMLElement;
+import { View } from "./view.js";
 
-  constructor(seletor: string) {
-    this.elemento = document.querySelector(seletor);
-  }
+export class NegociacoesView extends View<Negociacoes> {
 
   //*  A razão deste template existir é que ele vai retornar uma string HTML, no futuro, com a HTML e os dados desejados, fundidos nesse HTML. Mas, por enquanto, só será retornado o HTML da tabela com o seu cabeçalho.
   template(model: Negociacoes): string {
@@ -35,11 +32,5 @@ export class NegociacoesView {
             </tbody>
         </table>   
     `;
-  }
-
-  update(model: Negociacoes): void {
-    const template = this.template(model);
-    console.log(template);
-    this.elemento.innerHTML = template;
   }
 }
